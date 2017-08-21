@@ -186,7 +186,7 @@ Listener.prototype.setOrientation = function (forward_x, forward_y, forward_z,
   this._tempMatrix4[6] = forward_x;
   this._tempMatrix4[7] = forward_y;
   this._tempMatrix4[8] = forward_z;
-  this._renderer.setRotationMatrix(this._tempMatrix4);
+  this._renderer.setRotationMatrix3(this._tempMatrix4);
 }
 
 
@@ -206,7 +206,7 @@ Listener.prototype.setFromMatrix = function (matrix4) {
   this._tempMatrix4[6] = matrix4.elements[8];
   this._tempMatrix4[7] = matrix4.elements[9];
   this._tempMatrix4[8] = matrix4.elements[10];
-  this._renderer.setRotationMatrix(this._tempMatrix4);
+  this._renderer.setRotationMatrix3(this._tempMatrix4);
 
   // Extract position from matrix.
   this.position[0] = matrix4.elements[12];

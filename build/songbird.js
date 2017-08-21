@@ -528,7 +528,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  this._tempMatrix4[6] = forward_x;
 	  this._tempMatrix4[7] = forward_y;
 	  this._tempMatrix4[8] = forward_z;
-	  this._renderer.setRotationMatrix(this._tempMatrix4);
+	  this._renderer.setRotationMatrix3(this._tempMatrix4);
 	}
 
 
@@ -548,7 +548,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  this._tempMatrix4[6] = matrix4.elements[8];
 	  this._tempMatrix4[7] = matrix4.elements[9];
 	  this._tempMatrix4[8] = matrix4.elements[10];
-	  this._renderer.setRotationMatrix(this._tempMatrix4);
+	  this._renderer.setRotationMatrix3(this._tempMatrix4);
 
 	  // Extract position from matrix.
 	  this.position[0] = matrix4.elements[12];
@@ -617,7 +617,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	/************************************************************************/
 	/******/ ([
 	/* 0 */
-	/***/ (function(module, exports, __webpack_require__) {
+	/***/ function(module, exports, __webpack_require__) {
 
 		/**
 		 * @license
@@ -641,9 +641,9 @@ return /******/ (function(modules) { // webpackBootstrap
 		exports.Omnitone = __webpack_require__(1);
 
 
-	/***/ }),
+	/***/ },
 	/* 1 */
-	/***/ (function(module, exports, __webpack_require__) {
+	/***/ function(module, exports, __webpack_require__) {
 
 		/**
 		 * Copyright 2016 Google Inc. All Rights Reserved.
@@ -813,9 +813,9 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = Omnitone;
 
 
-	/***/ }),
+	/***/ },
 	/* 2 */
-	/***/ (function(module, exports, __webpack_require__) {
+	/***/ function(module, exports, __webpack_require__) {
 
 		/**
 		 * Copyright 2016 Google Inc. All Rights Reserved.
@@ -949,9 +949,9 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = AudioBufferManager;
 
 
-	/***/ }),
+	/***/ },
 	/* 3 */
-	/***/ (function(module, exports) {
+	/***/ function(module, exports) {
 
 		/**
 		 * Copyright 2016 Google Inc. All Rights Reserved.
@@ -1069,9 +1069,9 @@ return /******/ (function(modules) { // webpackBootstrap
 		};
 
 
-	/***/ }),
+	/***/ },
 	/* 4 */
-	/***/ (function(module, exports) {
+	/***/ function(module, exports) {
 
 		/**
 		 * Copyright 2017 Google Inc. All Rights Reserved.
@@ -1192,9 +1192,9 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = FOAConvolver;
 
 
-	/***/ }),
+	/***/ },
 	/* 5 */
-	/***/ (function(module, exports) {
+	/***/ function(module, exports) {
 
 		/**
 		 * Copyright 2016 Google Inc. All Rights Reserved.
@@ -1290,9 +1290,9 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = FOARouter;
 
 
-	/***/ }),
+	/***/ },
 	/* 6 */
-	/***/ (function(module, exports) {
+	/***/ function(module, exports) {
 
 		/**
 		 * Copyright 2016 Google Inc. All Rights Reserved.
@@ -1380,7 +1380,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		  this._outY.gain.value = -1;
 		  this._outX.gain.value = -1;
 
-		  this.setRotationMatrix(new Float32Array([1, 0, 0, 0, 1, 0, 0, 0, 1]));
+		  this.setRotationMatrix3(new Float32Array([1, 0, 0, 0, 1, 0, 0, 0, 1]));
 
 		  // input/output proxy.
 		  this.input = this._splitter;
@@ -1389,20 +1389,20 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 		/**
-		 * Set 3x3 matrix for soundfield rotation. (gl-matrix.js style)
-		 * @param {Array} rotationMatrix    A 3x3 matrix of soundfield rotation. The
+		 * Set 3x3 matrix for soundfield rotation.
+		 * @param {Array} rotationMatrix3   A 3x3 matrix of soundfield rotation. The
 		 *                                  matrix is in the row-major representation.
 		 */
-		FOARotator.prototype.setRotationMatrix = function (rotationMatrix) {
-		  this._m0.gain.value = rotationMatrix[0];
-		  this._m1.gain.value = rotationMatrix[1];
-		  this._m2.gain.value = rotationMatrix[2];
-		  this._m3.gain.value = rotationMatrix[3];
-		  this._m4.gain.value = rotationMatrix[4];
-		  this._m5.gain.value = rotationMatrix[5];
-		  this._m6.gain.value = rotationMatrix[6];
-		  this._m7.gain.value = rotationMatrix[7];
-		  this._m8.gain.value = rotationMatrix[8];
+		FOARotator.prototype.setRotationMatrix3 = function (rotationMatrix3) {
+		  this._m0.gain.value = rotationMatrix3[0];
+		  this._m1.gain.value = rotationMatrix3[1];
+		  this._m2.gain.value = rotationMatrix3[2];
+		  this._m3.gain.value = rotationMatrix3[3];
+		  this._m4.gain.value = rotationMatrix3[4];
+		  this._m5.gain.value = rotationMatrix3[5];
+		  this._m6.gain.value = rotationMatrix3[6];
+		  this._m7.gain.value = rotationMatrix3[7];
+		  this._m8.gain.value = rotationMatrix3[8];
 		};
 
 		/**
@@ -1438,9 +1438,9 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = FOARotator;
 
 
-	/***/ }),
+	/***/ },
 	/* 7 */
-	/***/ (function(module, exports, __webpack_require__) {
+	/***/ function(module, exports, __webpack_require__) {
 
 		/**
 		 * Copyright 2016 Google Inc. All Rights Reserved.
@@ -1554,9 +1554,9 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = FOAPhaseMatchedFilter;
 
 
-	/***/ }),
+	/***/ },
 	/* 8 */
-	/***/ (function(module, exports) {
+	/***/ function(module, exports) {
 
 		/**
 		 * Copyright 2016 Google Inc. All Rights Reserved.
@@ -1648,9 +1648,9 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = FOAVirtualSpeaker;
 
 
-	/***/ }),
+	/***/ },
 	/* 9 */
-	/***/ (function(module, exports, __webpack_require__) {
+	/***/ function(module, exports, __webpack_require__) {
 
 		/**
 		 * Copyright 2016 Google Inc. All Rights Reserved.
@@ -1865,9 +1865,9 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = FOADecoder;
 
 
-	/***/ }),
+	/***/ },
 	/* 10 */
-	/***/ (function(module, exports) {
+	/***/ function(module, exports) {
 
 		/**
 		 * Copyright 2016 Google Inc. All Rights Reserved.
@@ -1940,9 +1940,9 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = FOASpeakerData;
 
 
-	/***/ }),
+	/***/ },
 	/* 11 */
-	/***/ (function(module, exports) {
+	/***/ function(module, exports) {
 
 		/**
 		 * Copyright 2016 Google Inc. All Rights Reserved.
@@ -1969,12 +1969,12 @@ return /******/ (function(modules) { // webpackBootstrap
 		 * Omnitone library version
 		 * @type {String}
 		 */
-		module.exports = '0.9.1';
+		module.exports = '0.9.2';
 
 
-	/***/ }),
+	/***/ },
 	/* 12 */
-	/***/ (function(module, exports, __webpack_require__) {
+	/***/ function(module, exports, __webpack_require__) {
 
 		/**
 		 * Copyright 2017 Google Inc. All Rights Reserved.
@@ -2110,22 +2110,20 @@ return /******/ (function(modules) { // webpackBootstrap
 
 		/**
 		 * Set the rotation matrix for the sound field rotation.
-		 * @param {Array} rotationMatrix      3x3 rotation matrix (row-major
-		 *                                    representation)
+		 * @param {Array} rotationMatrix3     A 3x3 rotation matrix.
 		 */
-		FOARenderer.prototype.setRotationMatrix = function (rotationMatrix) {
+		FOARenderer.prototype.setRotationMatrix = function (rotationMatrix3) {
 		  if (!this._isRendererReady)
 		    return;
 
-		  this._foaRotator.setRotationMatrix(rotationMatrix);
+		  this._foaRotator.setRotationMatrix3(rotationMatrix3);
 		};
-
 
 		/**
 		 * Update the rotation matrix from a Three.js camera object.
-		 * @param  {Object} cameraMatrix      The Matrix4 obejct of Three.js the camera.
+		 * @param  {Object} cameraMatrix      Matrix4 object from Three.js camera.
 		 */
-		FOARenderer.prototype.setRotationMatrixFromCamera = function (cameraMatrix) {
+		FOARenderer.prototype.setRotationMatrixFromCamera = function(cameraMatrix) {
 		  if (!this._isRendererReady)
 		    return;
 
@@ -2186,9 +2184,9 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = FOARenderer;
 
 
-	/***/ }),
+	/***/ },
 	/* 13 */
-	/***/ (function(module, exports) {
+	/***/ function(module, exports) {
 
 		/**
 		 * Copyright 2016 Google Inc. All Rights Reserved.
@@ -2359,8 +2357,9 @@ return /******/ (function(modules) { // webpackBootstrap
 		  if (m === 0)
 		    return 0;
 
-		  return m > 0 ? P(matrix, 1, m + 1, n, l) + P(matrix, -1, -m - 1, n, l) :
-		                 P(matrix, 1, m - 1, n, l) - P(matrix, -1, -m + 1, n, l);
+		  return m > 0
+		      ? P(matrix, 1, m + 1, n, l) + P(matrix, -1, -m - 1, n, l)
+		      : P(matrix, 1, m - 1, n, l) - P(matrix, -1, -m + 1, n, l);
 		};
 
 		/**
@@ -2416,8 +2415,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		      if (Math.abs(uvwCoefficients[2]) > 0)
 		        uvwCoefficients[2] *= W(matrix, m, n, l);
 
-		      setCenteredElement(
-		          matrix, l, m, n,
+		      setCenteredElement(matrix, l, m, n,
 		          uvwCoefficients[0] + uvwCoefficients[1] + uvwCoefficients[2]);
 		    }
 		  }
@@ -2501,7 +2499,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		  this._splitter.connect(this._merger, 0, 0);
 
 		  // Default Identity matrix.
-		  this.setRotationMatrix(new Float32Array([1, 0, 0, 0, 1, 0, 0, 0, 1]));
+		  this.setRotationMatrix3(new Float32Array([1, 0, 0, 0, 1, 0, 0, 0, 1]));
 
 		  // Input/Output proxy.
 		  this.input = this._splitter;
@@ -2509,23 +2507,18 @@ return /******/ (function(modules) { // webpackBootstrap
 		};
 
 		/**
-		 * Set 3x3 matrix for soundfield rotation. (gl-matrix.js style)
-		 * @param {Array} rotationMatrix    A 3x3 matrix of soundfield rotation. The
-		 *                                  matrix is in the col-major representation.
+		 * Set 3x3 matrix for soundfield rotation.
+		 * @param {Float32Array} rotationMatrix3   A 3x3 rotation matrix.
 		 */
-		HOARotator.prototype.setRotationMatrix = function(rotationMatrix) {
-		  // Ambisonic spherical coordinates flip the signs for left/right and
-		  // front/back compared to OpenGL.
+		HOARotator.prototype.setRotationMatrix3 = function(rotationMatrix3) {
 		  for (var i = 0; i < 9; ++i)
-		    this._gainNodeMatrix[0][i].gain.value = rotationMatrix[i];
-
+		    this._gainNodeMatrix[0][i].gain.value = rotationMatrix3[i];
 		  computeHOAMatrices(this._gainNodeMatrix);
 		};
 
 		/**
-		 * Set 4x4 matrix for soundfield rotation. Uses col-major representation.
-		 * (Three.js style)
-		 * @param {Array} rotationMatrix4   A 4x4 matrix of soundfield rotation.
+		 * Set 4x4 matrix for soundfield rotation.
+		 * @param {Float32Array} rotationMatrix4   A 4x4 rotation matrix.
 		 */
 		HOARotator.prototype.setRotationMatrix4 = function(rotationMatrix4) {
 		  this._gainNodeMatrix[0][0].gain.value = rotationMatrix4[0];
@@ -2541,14 +2534,31 @@ return /******/ (function(modules) { // webpackBootstrap
 		};
 
 		/**
-		 * Returns the current rotation matrix.
-		 * @return {Array}                  A 3x3 matrix of soundfield rotation. The
-		 *                                  matrix is in the col-major representation.
+		 * Returns the current 3x3 rotation matrix.
+		 * @return {Float32Array}                   A 3x3 rotation matrix.
 		 */
-		HOARotator.prototype.getRotationMatrix = function() {
-		  var rotationMatrix = Float32Array(9);
+		HOARotator.prototype.getRotationMatrix3 = function() {
+		  var rotationMatrix = new Float32Array(9);
 		  for (var i = 0; i < 9; ++i)
 		    rotationMatrix[i] = this._gainNodeMatrix[0][i].gain.value;
+		  return rotationMatrix;
+		};
+
+		/**
+		 * Returns the current 4x4 rotation matrix.
+		 * @return {Float32Array}                   A 4x4 rotation matrix.
+		 */
+		HOARotator.prototype.getRotationMatrix4 = function() {
+		  var rotationMatrix = new Float32Array(16);
+		  rotationMatrix4[0] = this._gainNodeMatrix[0][0].gain.value;
+		  rotationMatrix4[1] = this._gainNodeMatrix[0][1].gain.value;
+		  rotationMatrix4[2] = this._gainNodeMatrix[0][2].gain.value;
+		  rotationMatrix4[4] = this._gainNodeMatrix[0][3].gain.value;
+		  rotationMatrix4[5] = this._gainNodeMatrix[0][4].gain.value;
+		  rotationMatrix4[6] = this._gainNodeMatrix[0][5].gain.value;
+		  rotationMatrix4[8] = this._gainNodeMatrix[0][6].gain.value;
+		  rotationMatrix4[9] = this._gainNodeMatrix[0][7].gain.value;
+		  rotationMatrix4[10] = this._gainNodeMatrix[0][8].gain.value;
 		  return rotationMatrix;
 		};
 
@@ -2564,9 +2574,9 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = HOARotator;
 
 
-	/***/ }),
+	/***/ },
 	/* 14 */
-	/***/ (function(module, exports) {
+	/***/ function(module, exports) {
 
 		/**
 		 * Copyright 2017 Google Inc. All Rights Reserved.
@@ -2652,7 +2662,6 @@ return /******/ (function(modules) { // webpackBootstrap
 		    this._stereoMergers[i] = this._context.createChannelMerger(2);
 		    this._convolvers[i] = this._context.createConvolver();
 		    this._stereoSplitters[i] = this._context.createChannelSplitter(2);
-
 		    this._convolvers[i].normalize = false;
 		  }
 
@@ -2710,14 +2719,18 @@ return /******/ (function(modules) { // webpackBootstrap
 
 		  // Generate Math.ceil(K/2) stereo buffers from a K-channel IR buffer.
 		  for (var i = 0; i < numberOfStereoBuffers; ++i) {
-		    var leftIndex = i * 2;
-		    var rightIndex = i * 2 + 1;
 		    var stereoHRIRBuffer =
 		        this._context.createBuffer(2, buffer.length, buffer.sampleRate);
-		    stereoHRIRBuffer.copyToChannel(buffer.getChannelData(leftIndex), 0);
-		    if (rightIndex < buffer.numberOfChannels) {
-		      stereoHRIRBuffer.copyToChannel(buffer.getChannelData(rightIndex), 1);
-		    }
+		    var leftIndex = i * 2;
+		    var rightIndex = i * 2 + 1;
+		    // Omnitone uses getChannelData().set() over copyToChannel() because:
+		    // - None of these buffer won't get accessed until the initialization
+		    //   process finishes. No data race can happen.
+		    // - To support all browsers. CopyToChannel() is only supported from
+		    //   Chrome and FireFox.
+		    stereoHRIRBuffer.getChannelData(0).set(buffer.getChannelData(leftIndex));
+		    if (rightIndex < buffer.numberOfChannels)
+		      stereoHRIRBuffer.getChannelData(1).set(buffer.getChannelData(rightIndex));
 		    this._convolvers[i].buffer = stereoHRIRBuffer;
 		  }
 		};
@@ -2742,9 +2755,9 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = HOAConvolver;
 
 
-	/***/ }),
+	/***/ },
 	/* 15 */
-	/***/ (function(module, exports, __webpack_require__) {
+	/***/ function(module, exports, __webpack_require__) {
 
 		/**
 		 * Copyright 2017 Google Inc. All Rights Reserved.
@@ -2795,27 +2808,19 @@ return /******/ (function(modules) { // webpackBootstrap
 		  this._renderingMode = 'ambisonic';
 		  this._ambisonicOrder = 3;
 
-		  if (options !== undefined) {
-		    if (options.HRIRUrl !== undefined)
+		  if (options) {
+		    if (options.HRIRUrl)
 		      this._HRIRUrls = options.HRIRUrl;
-		    if (options.renderingMode !== undefined)
+		    if (options.renderingMode)
 		      this._renderingMode = options.renderingMode;
-		    if (options.ambisonicOrder !== undefined)
+		    if (options.ambisonicOrder)
 		      this._ambisonicOrder = options.ambisonicOrder;
 		  }
 
 		  this._numberOfChannels =
 		      (this._ambisonicOrder + 1) * (this._ambisonicOrder + 1);
-		  this._tempMatrix4 = new Float32Array(16);
 
 		  this._isRendererReady = false;
-
-		  this.input = this._context.createGain();
-		  this.output = this._context.createGain();
-		  this._bypass = this._context.createGain();
-
-		  this._hoaRotator = new HOARotator(this._context, this._ambisonicOrder);
-		  this.input.connect(this._bypass);
 		}
 
 
@@ -2843,56 +2848,73 @@ return /******/ (function(modules) { // webpackBootstrap
 
 		  // Constrcut a consolidated HOA HRIR (e.g. 16 channels for TOA).
 		  // Handle multiple chunks of HRIR buffer data splitted by 8 channels each.
-		  // This is because Chrome cannot decode the audio file >8  channels.
+		  // This is because Chrome cannot decode the audio file >8 channels.
 		  var audioBufferData = [];
 		  this._HRIRUrls.forEach(function(key, index, urls) {
-		    audioBufferData.push({name: index, url: urls[index]});
+		    audioBufferData.push({name: key, url: urls[index]});
 		  });
 
 		  new AudioBufferManager(
 		      this._context, audioBufferData,
 		      function(buffers) {
-		        buffers.forEach(function(buffer, key, buffers) {
+		        var accumulatedChannelCount = 0;
+		        // The iteration order of buffer in |buffers| might be flaky because it
+		        // is a Map. Thus, iterate based on the |audioBufferData| array instead
+		        // of the |buffers| map.
+		        audioBufferData.forEach(function (data) {
+		          var buffer = buffers.get(data.name);
+
 		          // Create a K channel buffer to integrate individual IR buffers.
 		          if (!hoaHRIRBuffer) {
 		            hoaHRIRBuffer = this._context.createBuffer(
 		                this._numberOfChannels, buffer.length, buffer.sampleRate);
 		          }
 
-		          // Determine channel offset for each buffer.
-		          var channelOffset = 0;
-		          for (var i = 0; i < key; i++) {
-		            channelOffset += buffers.get(key).numberOfChannels;
-		          }
 		          for (var channel = 0; channel < buffer.numberOfChannels; ++channel) {
-		            hoaHRIRBuffer.copyToChannel(
-		                buffer.getChannelData(channel), channelOffset + channel);
+		            hoaHRIRBuffer.getChannelData(accumulatedChannelCount + channel)
+		                .set(buffer.getChannelData(channel));
 		          }
+
+		          accumulatedChannelCount += buffer.numberOfChannels;
 		        }.bind(this));
 
-		        this._buildConvolver(hoaHRIRBuffer);
-		        this._isRendererReady = true;
-		        Utils.log('Rendering via SH-MaxRE convolution.');
-		        resolve();
+		        if (accumulatedChannelCount === this._numberOfChannels) {
+		          this._buildAudioGraph(hoaHRIRBuffer);
+		          this._isRendererReady = true;
+		          Utils.log('Rendering via SH-MaxRE convolution.');
+		          resolve();
+		        } else {
+		          var errorMessage = 'Only ' + accumulatedChannelCount +
+		              ' HRIR channels were loaded (expected ' + this._numberOfChannels +
+		              '). The renderer will not function correctly.';
+		          Utils.log(errorMessage);
+		          reject(errorMessage);
+		        }
 		      }.bind(this),
 		      function(buffers) {
-		        // TODO: why is it failing?
+		        // TODO: Deiliver more descriptive error message.
 		        var errorMessage = 'Initialization failed.';
 		        Utils.log(errorMessage);
 		        reject(errorMessage);
-		      }.bind(this));
+		      });
 		};
 
 
 		/**
-		 * Internal method that builds and connects the convolver to the audio graph.
+		 * Internal method that builds the audio graph.
 		 */
-		HOARenderer.prototype._buildConvolver = function(hoaHRIRBuffer) {
+		HOARenderer.prototype._buildAudioGraph = function(hoaHRIRBuffer) {
+		  this.input = this._context.createGain();
+		  this.output = this._context.createGain();
+		  this._bypass = this._context.createGain();
+
+		  this._hoaRotator = new HOARotator(this._context, this._ambisonicOrder);
 		  this._hoaConvolver = new HOAConvolver(
 		      this._context,
 		      {IRBuffer: hoaHRIRBuffer, ambisonicOrder: this._ambisonicOrder});
 
 		  this.input.connect(this._hoaRotator.input);
+		  this.input.connect(this._bypass);
 		  this._hoaRotator.output.connect(this._hoaConvolver.input);
 		  this._hoaConvolver.output.connect(this.output);
 
@@ -2902,23 +2924,27 @@ return /******/ (function(modules) { // webpackBootstrap
 
 		/**
 		 * Set the rotation matrix for the sound field rotation.
-		 * @param {Array} rotationMatrix      3x3 rotation matrix (row-major
-		 *                                    representation)
+		 * @param {Array} rotationMatrix3           A 3x3 rotation matrix (col-major)
 		 */
-		HOARenderer.prototype.setRotationMatrix = function(rotationMatrix) {
-		  this._hoaRotator.setRotationMatrix(rotationMatrix);
+		HOARenderer.prototype.setRotationMatrix3 = function(rotationMatrix3) {
+		  if (!this._isRendererReady)
+		    return;
+
+		  this._hoaRotator.setRotationMatrix3(rotationMatrix3);
 		};
 
 
 		/**
-		 * Update the rotation matrix from a Three.js camera object.
-		 * @param  {Object} cameraMatrix      The Matrix4 obejct of Three.js the camera.
+		 * Update the rotation from a 4x4 matrix. This expects the model matrix of
+		 * Camera object. For example, Three.js offers |Object3D.matrixWorld| for this
+		 * purpose.
+		 * @param {Float32Array} rotationMatrix4    A 4x4 rotation matrix (col-major)
 		 */
-		HOARenderer.prototype.setRotationMatrixFromCamera = function(cameraMatrix) {
-		  // Extract the inner array elements and inverse. (The actual view rotation is
-		  // the opposite of the camera movement.)
-		  Utils.invertMatrix4(this._tempMatrix4, cameraMatrix.elements);
-		  this._hoaRotator.setRotationMatrix4(this._tempMatrix4);
+		HOARenderer.prototype.setRotationMatrix4 = function(rotationMatrix4) {
+		  if (!this._isRendererReady)
+		    return;
+
+		  this._hoaRotator.setRotationMatrix4(rotationMatrix4);
 		};
 
 
@@ -2933,7 +2959,6 @@ return /******/ (function(modules) { // webpackBootstrap
 		 *                                    the CPU power.
 		 */
 		HOARenderer.prototype.setRenderingMode = function(mode) {
-		  // TODO(bitllama): _isRendererReady should be used here for _hoaConvovler.
 		  if (mode === this._renderingMode)
 		    return;
 		  switch (mode) {
@@ -2972,7 +2997,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = HOARenderer;
 
 
-	/***/ })
+	/***/ }
 	/******/ ])
 	});
 	;
